@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Telegram Auto Message</title>
+</head>
+<body>
+
+<h1>Welcome</h1>
+
+<script>
+  const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
+  const CHAT_ID = "YOUR_CHAT_ID_HERE";
+  const MESSAGE = "Someone visited the page!";
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: MESSAGE
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log("Message sent", data))
+  .catch(err => console.error("Error:", err));
+</script>
+
+</body>
+</html>
